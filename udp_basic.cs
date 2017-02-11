@@ -19,7 +19,7 @@ namespace Communication
             public static int    port              =  7000;
             public static string IpAdressBroadcast =  "192.168.0.255";
             public static string IpAdress          =  "127.0.0.1";       //"192.168.0.105";
-            public static int TimeOutCycles        = 10;
+            public static int    TimeOutCycles     = 10;
         }
 
         class UdpReceive
@@ -47,7 +47,7 @@ namespace Communication
 
             // infos
             public string lastReceivedUDPPacket="";
-            public string allReceivedUDPPackets=""; // clean up this from time to time!
+            public string allReceivedUDPPackets=""; 
             string _receivedText;
 
             public delegate void DataReceived ( string e );
@@ -115,12 +115,11 @@ namespace Communication
 
         class UdpSend
         {
-            // prefs 
-            private string IP = UDPConfig.IpAdress;  // define in init
-            public int port   = UDPConfig.port;  // define in init
-            // "connection" things
+            private string IP = UDPConfig.IpAdress;  
+            public int port   = UDPConfig.port;  
+
             IPEndPoint remoteEndPoint;
-            UdpClient client;
+            UdpClient  client;
 
             public UdpSend ( )
             {
@@ -133,7 +132,7 @@ namespace Communication
                 remoteEndPoint = new IPEndPoint( IPAddress.Parse( ip_ ), port_ );
                 client         = new UdpClient(  );
             }
-            // sendData
+
             private void sendString ( string message )
             {
                 if( String.IsNullOrWhiteSpace( message ) )
@@ -143,13 +142,8 @@ namespace Communication
                 }
                 try
                 {
-                    // Daten mit der UTF8-Kodierung in das Binärformat kodieren.
                     byte[] data = Encoding.UTF8.GetBytes( message );
-                    if( client != null )
-                    {
-                        // Daten message zum Remote-Client senden.
-                        client.Send( data, data.Length, remoteEndPoint );
-                    }
+                    client?.Send( data, data.Length, remoteEndPoint );
                 }
                 catch( Exception err )
                 {

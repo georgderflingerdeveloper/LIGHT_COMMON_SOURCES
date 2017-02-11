@@ -38,10 +38,7 @@ namespace Communication
                 DigitalOutputIndex_ = ind;
                 DigitalOutputValue_ = val;
 
-                if( EDigitalOutput != null )
-                {
-                    EDigitalOutput( ind, val );
-                }
+                EDigitalOutput?.Invoke( ind, val );
             }
 
             public void DigitalInput_IndexWithValue( int ind, bool val )

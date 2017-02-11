@@ -351,28 +351,24 @@ namespace HomeAutomation
         #endregion
 
         #region COMAND_STRINGS
-        static class ComandoString
+        public static class ComandoString
         {
-            public  const string  NONE              = "NONE";
-            public  const string  COMAND_INFOTEXT   = "ON/OFF/BLINK/SPOT1_ON/OFF/EFF_WALK/EXIT/SELF_ON/SELF_OFF";
-            public  const string  ON                = "ON";
-            public  const string  OFF               = "OFF";
-            public  const string  EXIT              = "EXIT";
-            public  const string  BLINK             = "BLINK";
-            public  const string  EFFECT_WALK       = "EFF_WALK";
-            public  const string  SELF_TEST         = "SELF_ON";
-            public  const string  SELF_TEST_OFF     = "SELF_OFF";
+            public  const string  NONE                        = "NONE";
+            public  const string  ON                          = "ON";
+            public  const string  OFF                         = "OFF";
+            public  const string  EXIT                        = "EXIT";
+            public  const string  BLINK                       = "BLINK";
+            public  const string  TURN_ALL_LIGHTS_OFF         = "TURN-ALL-LIGHTS-OFF";
+            public  const string  TURN_ALL_LIGHTS_ON          = "TURN-ALL-LIGHTS-ON";
+            public const string   TURN_ALL_KITCHEN_LIGHTS_OFF = "TURN-ALL-KITCHEN-LIGHTS-OFF";
+            public const string   TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
 
             static Dictionary<uint, string> ComandoDictionary = new Dictionary<uint, string>
             {
-            {0,                  COMAND_INFOTEXT                },
-            {1,                  ON                             },
-            {2,                  OFF                            },
-            {4,                  BLINK                          },
-            {36,                 EFFECT_WALK                    },
-            {37,                 SELF_TEST                      },
-            {38,                 SELF_TEST_OFF                  },
-            {100,                EXIT                           }
+                {1,                  ON                             },
+                {2,                  OFF                            },
+                {4,                  BLINK                          },
+                {100,                EXIT                           }
             };
 
             public static string GetComando( uint comandokey )
@@ -421,6 +417,7 @@ namespace HomeAutomation
             public const int Input_TipNext                      = 1;
             public const int Output_Spot1                       = 0;
         }
+
         static class CommonRoomIOAssignment
         {
             public const int  indMainButton                     = 0;
@@ -429,6 +426,7 @@ namespace HomeAutomation
             public const int  indOptionalMakeStep               = 3;
             public const int  indOutputIsAlive                  = 15;
         }
+
         static class CenterButtonRelayIOAssignment
         {
             public const int indDigitalInputRelaySleepingRoom    = 3;
@@ -704,6 +702,7 @@ namespace HomeAutomation
 			public const string CirculationPump                    = Prefix + "Zirkulationspumpe für Warmwasser";
 			public const string HeaterEast                         = Prefix + "Thermostatkopf Heizung Ost";
 			public const string HeaterWest                         = Prefix + "Thermostatkopf Heizung West";
+            public const string FanWashRoom                        = Prefix + "Lüfter WC";
         }
 
         static class ParametersLightControlCenterOutside
@@ -747,7 +746,8 @@ namespace HomeAutomation
 				{ CenterLivingRoomIODeviceIndices.indDigitalOutputBoiler,                     CenterKitchenDeviceNames.Boiler             },
 				{ WaterHeatingSystemIODeviceIndices.indDigitalOutputWarmWaterCirculationPump, CenterKitchenDeviceNames.CirculationPump    },
 				{ KitchenLivingRoomIOAssignment.indFirstHeater,                               CenterKitchenDeviceNames.HeaterEast         },
-				{ KitchenLivingRoomIOAssignment.indLastHeater,                                CenterKitchenDeviceNames.HeaterWest         }
+				{ KitchenLivingRoomIOAssignment.indLastHeater,                                CenterKitchenDeviceNames.HeaterWest         },
+                { WashRoomIODeviceIndices.indDigitalOutputWashRoomFan,                        CenterKitchenDeviceNames.FanWashRoom        }
 			};
 
 			public static string GetInputDeviceName( int key )
