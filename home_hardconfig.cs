@@ -360,8 +360,8 @@ namespace HomeAutomation
             public  const string  BLINK                       = "BLINK";
             public  const string  TURN_ALL_LIGHTS_OFF         = "TURN-ALL-LIGHTS-OFF";
             public  const string  TURN_ALL_LIGHTS_ON          = "TURN-ALL-LIGHTS-ON";
-            public const string   TURN_ALL_KITCHEN_LIGHTS_OFF = "TURN-ALL-KITCHEN-LIGHTS-OFF";
-            public const string   TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
+            public  const string  TURN_ALL_KITCHEN_LIGHTS_OFF = "TURN-ALL-KITCHEN-LIGHTS-OFF";
+            public  const string  TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
 
             static Dictionary<uint, string> ComandoDictionary = new Dictionary<uint, string>
             {
@@ -647,7 +647,7 @@ namespace HomeAutomation
             public const int indDigitalOutputBoiler                            = 10;
             public const int indDigitalOutputPumpHeatingSystem                 = 8;
             public const int indDigitalInputDoorEntryAnteRoom                  = 8;
-            public const int indDigitalInputPowerMeter                         = 9;
+            public const int indDigitalInputPowerMeter                         = 10;
         }
 
         static class CenterOutsideIODevices
