@@ -166,8 +166,6 @@ namespace HomeAutomation
 			public const string BraceClose                                             =  ")";
 		}
 
-
-
         static class InfoOperationMode
         {
             public const string SLEEPING_ROOM                                           =  "SLEEPINGROOM";
@@ -294,8 +292,8 @@ namespace HomeAutomation
                 public const int PORT_UDP_SLEEPINGROOM               = 5001;
                 public const int PORT_UDP_ANTEROOM                   = 5002;
                 public const int PORT_UDP_CENTER                     = 5003;
-                public const int PORT_UDP_LIVINGROOM_EAST            = 5004;
-                public const int PORT_UDP_LIVINGROOM_WEST            = 5005;
+                public const int PORT_UDP_LIVINGROOM_EAST            = 5009;
+                public const int PORT_UDP_LIVINGROOM_WEST            = 5010;
             }
 
             public static class Prefix
@@ -362,6 +360,8 @@ namespace HomeAutomation
             public  const string  TURN_ALL_LIGHTS_ON          = "TURN-ALL-LIGHTS-ON";
             public const string   TURN_ALL_KITCHEN_LIGHTS_OFF = "TURN-ALL-KITCHEN-LIGHTS-OFF";
             public const string   TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
+            public const string   TURN_GALLERY_DOWN_ON        = "TURN-GALLERY-DOWN-ON";
+            public const string   TURN_GALLERY_DOWN_OFF       = "TURN-GALLERY-DOWN-OFF";
 
             static Dictionary<uint, string> ComandoDictionary = new Dictionary<uint, string>
             {
@@ -856,6 +856,7 @@ namespace HomeAutomation
             public const int indSpotGalleryFloor_17_19_20_21         = 10;
             public const int indBarGallery1_4                        = 11;
             public const int indDigitalInput_PresenceDetector        = 5;
+            public const int indDigitalInput_MainDoorWingRight       = 4;
         }
         #endregion
 

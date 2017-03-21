@@ -839,5 +839,13 @@ namespace Communication
         }
         #endregion
 
+        #region TELEGRAM_CONSTANTS
+        static class UdpTelegram
+        {
+            public const int DelfaultExpectedArrayElementsSignalTelegram = 3;
+        }
+        #endregion
+
+
     }
 }
