@@ -689,7 +689,7 @@ namespace HomeAutomation
 			public const string PresenceDetector                   = Prefix + "Bewegungsmelder neben E-Vereiler";
 			public const string ButtonSleepingRoom                 = Prefix + "Taster Schlafzimmer"; 
 			public const string ButtonAnteRoom                     = Prefix + "Taster Vorhaus";
-			public const string ButtonBathRoom                     = Prefix + "Taster Badetimmer";
+			public const string ButtonBathRoom                     = Prefix + "Taster Badezimmer";
 			public const string ButtonWashRoom                     = Prefix + "Taster WC";
 			public const string FrontLight1                        = Prefix + "Lichtbalken Küche 1 ( ganz rechts und links )";
 			public const string FrontLight2                        = Prefix + "Lichtbalken Küche 2 ( von rechts )";
@@ -832,6 +832,13 @@ namespace HomeAutomation
             static readonly public double TimeDemandForAllOn                                    = TimeConverter.ToMiliseconds( 2.5 );
         }
 
+        static class EastDeviceNames
+        {
+            public const string Prefix = InfoOperationMode.LIVING_ROOM_EAST + Seperators.WhiteSpace;
+            public const string TestButton = Prefix + "Test Knopf";
+            public const string DoorSwitch = Prefix + "Tür Schalter Eingang Haupt (rechts)";
+        }
+
         static class EastSideIOAssignment
         {
             public const int indTestButton                           = 0;
@@ -857,6 +864,21 @@ namespace HomeAutomation
             public const int indBarGallery1_4                        = 11;
             public const int indDigitalInput_PresenceDetector        = 5;
             public const int indDigitalInput_MainDoorWingRight       = 4;
+            public const int indDigitalInput_DoorSwitchMainRight     = 7;
+
+            public static uint SerialCard1;
+
+            static Dictionary<uint, string> EastInputDeviceDictionary = new Dictionary<uint, string>
+            {
+                { indTestButton                       + SerialCard1,             EastDeviceNames.TestButton         },
+                { indDigitalInput_DoorSwitchMainRight + SerialCard1,             EastDeviceNames.DoorSwitch        },
+            };
+
+            public static string GetInputDeviceName(int key)
+            {
+                return (GetData.ValueFromDeviceDictionary( EastInputDeviceDictionary, Convert.ToUInt32( key ) ));
+            }
+
         }
         #endregion
 
