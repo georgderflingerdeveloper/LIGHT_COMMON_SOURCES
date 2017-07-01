@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SystemServices;
 using System.Data.Odbc;
@@ -53,6 +53,12 @@ namespace HomeAutomation
                 }
                 return InfoString.DeviceNotFound;
             }
+
+            public static Dictionary<string, string> DeviceDictionaryNetworkIdentifiers = new Dictionary<string, string>
+            {
+                {CenterKitchenDeviceNames.Boiler,                                      HardwareDevices.Boiler                                                            },
+            };
+
         }
 
         static class EscapeSequences
@@ -174,12 +180,10 @@ namespace HomeAutomation
             public const string LIVING_ROOM_EAST                                        =  "LIVINGROOMEAST";
             public const string LIVING_ROOM_WEST                                        =  "LIVINGROOMWEST";
             public const string OUTSIDE                                                 =  "OUTSIDE";
-
             public const string IO_CTRL                                                 =  "IO_CTRL";
             public const string TEST_PWM                                                =  "TEST_PWM";
             public const string ANALOG_HEATER                                           =  "ANALOG_HEATER";
             public const string LED_CTRL                                                =  "LED_CTRL";
-
             public const string TCP_COMUNICATION_SERVER                                 =  "TCP_SERVER";
             public const string TCP_COMUNICATION_CLIENT                                 =  "TCP_CLIENT";
             public const string TCP_COMUNICATION_CLIENT_SINGLE_MESSAGES                 =  "TCP_CLIENT_SINGLE_MESSAGES";
@@ -250,7 +254,6 @@ namespace HomeAutomation
                 public const string SWindowNorth_Left             = "SleepingRoomWindowNorthLeft";         // Velux Fenster links
                 public const string SWindowNorth_Right            = "SleepingRoomWindowNorthRight";        // Velux Fenster rechts
                 public const string SFireAlert                    = "SleepingRoomFireAlert";               // fire alert - GIRA Rauchmelder
-
                 public const string SHeater                       = "SleepingRoomHeater";                  // Heizkörper
                 public const string SMansardRightEnd              = "SleepingRoomMansardRightEnd";         // Leuchte Mansarden ganz rechts
                 public const string SBarMansardWindowRight        = "SleepingRoomBarMansardWindowRight";   // Led Balken Mansarden Fenster rechter Rand 
@@ -294,6 +297,7 @@ namespace HomeAutomation
                 public const int PORT_UDP_CENTER                     = 5003;
                 public const int PORT_UDP_LIVINGROOM_EAST            = 5009;
                 public const int PORT_UDP_LIVINGROOM_WEST            = 5010;
+                public const int PORT_UDP_WEB_FORWARDER_CENTER       = 10000;
             }
 
             public static class Prefix
@@ -362,6 +366,8 @@ namespace HomeAutomation
             public const string   TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
             public const string   TURN_GALLERY_DOWN_ON        = "TURN-GALLERY-DOWN-ON";
             public const string   TURN_GALLERY_DOWN_OFF       = "TURN-GALLERY-DOWN-OFF";
+            public const string   TURN_BOILER_ON              = "TURN-BOILER-ON";
+            public const string   TURN_BOILER_OFF             = "TURN-BOILER-OFF";
 
             static Dictionary<uint, string> ComandoDictionary = new Dictionary<uint, string>
             {
@@ -647,7 +653,7 @@ namespace HomeAutomation
             public const int indDigitalOutputBoiler                            = 10;
             public const int indDigitalOutputPumpHeatingSystem                 = 8;
             public const int indDigitalInputDoorEntryAnteRoom                  = 8;
-            public const int indDigitalInputPowerMeter                         = 9;
+            public const int indDigitalInputPowerMeter                         = 10;
         }
 
         static class CenterOutsideIODevices
@@ -686,7 +692,7 @@ namespace HomeAutomation
 			public const string Prefix                             = InfoOperationMode.CENTER_KITCHEN_AND_LIVING_ROOM + Seperators.WhiteSpace;
 			public const string LightSightCabinet                  = Prefix + "LED Balken Seitenschrank mit Elektroverteilung";
 			public const string MainButton                         = Prefix + "Haupt Taster";
-			public const string PresenceDetector                   = Prefix + "Bewegungsmelder neben E-Vereiler";
+			public const string PresenceDetector                   = Prefix + "Bewegungsmelder neben E-Verteiler";
 			public const string ButtonSleepingRoom                 = Prefix + "Taster Schlafzimmer"; 
 			public const string ButtonAnteRoom                     = Prefix + "Taster Vorhaus";
 			public const string ButtonBathRoom                     = Prefix + "Taster Badezimmer";
@@ -842,9 +848,9 @@ namespace HomeAutomation
         static class EastSideIOAssignment
         {
             public const int indTestButton                           = 0;
-            public const int indSpotFrontSide1_4                     = 0;
-            public const int indSpotFrontSide5_8                     = 1;
-            public const int indSpotBackSide1_3                      = 2;
+            public const int indDigitalOutput_SpotFrontSide_1_4      = 0;
+            public const int indDigitalOutput_SpotFrontSide_5_8      = 1;
+            public const int indDigitalOutput_SpotBackSide_1_3       = 2;
             public const int indSpotBackSide4_8                      = 3;
             public const int indLightsTriangleGalleryBack            = 4;
             public const int indDoorEntry_Window_Right               = 5;
@@ -864,7 +870,7 @@ namespace HomeAutomation
             public const int indBarGallery1_4                        = 11;
             public const int indDigitalInput_PresenceDetector        = 5;
             public const int indDigitalInput_MainDoorWingRight       = 4;
-            public const int indDigitalInput_DoorSwitchMainRight     = 7;
+            public const int indDigitalInput_DoorSwitchMainRight     = 3;
 
             public static uint SerialCard1;
 

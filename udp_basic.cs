@@ -43,7 +43,24 @@ namespace Communication
                 receiveThread = new Thread( new ThreadStart( ReceiveData ) );
                 receiveThread.IsBackground = true;
                 receiveThread.Start( );
-         }
+            }
+
+            public UdpReceive ( IPAddress adress, int port_ )
+            {
+                port = port_;
+                // ----------------------------
+                // Abhören
+                // ----------------------------
+                // Lokalen Endpunkt definieren (wo Nachrichten empfangen werden).
+                // Einen neuen Thread für den Empfang eingehender Nachrichten erstellen.
+                client = new UdpClient( port );
+                client.ExclusiveAddressUse = false;
+                client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                client.Client.Bind(new IPEndPoint(adress,port));
+                receiveThread = new Thread( new ThreadStart( ReceiveData ) );
+                receiveThread.IsBackground = true;
+                receiveThread.Start( );
+            }
 
             // infos
             public string lastReceivedUDPPacket="";
