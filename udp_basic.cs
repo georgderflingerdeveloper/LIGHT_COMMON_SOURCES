@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
@@ -160,7 +160,7 @@ namespace Communication
                 try
                 {
                     byte[] data = Encoding.UTF8.GetBytes( message );
-                    client?.Send( data, data.Length, remoteEndPoint );
+                    client?.SendAsync( data, data.Length, remoteEndPoint );
                 }
                 catch( Exception err )
                 {

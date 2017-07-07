@@ -54,7 +54,7 @@ namespace HomeAutomation
                 return InfoString.DeviceNotFound;
             }
 
-            public static Dictionary<string, string> DeviceDictionaryNetworkIdentifiers = new Dictionary<string, string>
+            public static Dictionary<string, string> DeviceDictionaryTranslatorForNetworkCommands = new Dictionary<string, string>
             {
                 {CenterKitchenDeviceNames.Boiler,                                      HardwareDevices.Boiler                                                            },
             };
@@ -170,6 +170,8 @@ namespace HomeAutomation
 			public const string DeviceDigialOutput                                     =  "Device digital output";
 			public const string BraceOpen                                              =  "(";
 			public const string BraceClose                                             =  ")";
+            public const string On                                                     =  "ON";
+            public const string Off                                                    =  "OFF";
 		}
 
         static class InfoOperationMode
@@ -206,7 +208,7 @@ namespace HomeAutomation
 
 		public static class HardwareDevices
         {
-            public const string Boiler                                                  = "Boiler";
+            public const string Boiler                                                  = "BOILER";
             public const string PumpWarmwater                                           = "PumpWarmwater";           // Zirkulationspumpe für Warmwasser ( Küche, Bad, Dusche )
             public const string PumpCirculation                                         = "PumpCirculation";         // Zirkulationspumpe Heizkreis
             public const string DoorEntryAnteRoom                                       = "DoorEntryAnteRoom";       // Eingangstür Vorhaus
@@ -298,6 +300,7 @@ namespace HomeAutomation
                 public const int PORT_UDP_LIVINGROOM_EAST            = 5009;
                 public const int PORT_UDP_LIVINGROOM_WEST            = 5010;
                 public const int PORT_UDP_WEB_FORWARDER_CENTER       = 10000;
+                public const int PORT_UDP_IO_ECHO                    = 12000;
             }
 
             public static class Prefix
@@ -355,19 +358,25 @@ namespace HomeAutomation
         #region COMAND_STRINGS
         public static class ComandoString
         {
-            public  const string  NONE                        = "NONE";
-            public  const string  ON                          = "ON";
-            public  const string  OFF                         = "OFF";
-            public  const string  EXIT                        = "EXIT";
-            public  const string  BLINK                       = "BLINK";
-            public  const string  TURN_ALL_LIGHTS_OFF         = "TURN-ALL-LIGHTS-OFF";
-            public  const string  TURN_ALL_LIGHTS_ON          = "TURN-ALL-LIGHTS-ON";
-            public const string   TURN_ALL_KITCHEN_LIGHTS_OFF = "TURN-ALL-KITCHEN-LIGHTS-OFF";
-            public const string   TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
-            public const string   TURN_GALLERY_DOWN_ON        = "TURN-GALLERY-DOWN-ON";
-            public const string   TURN_GALLERY_DOWN_OFF       = "TURN-GALLERY-DOWN-OFF";
-            public const string   TURN_BOILER_ON              = "TURN-BOILER-ON";
-            public const string   TURN_BOILER_OFF             = "TURN-BOILER-OFF";
+            public const string NONE                        = "NONE";
+            public const string ON                          = "ON";
+            public const string OFF                         = "OFF";
+            public const string EXIT                        = "EXIT";
+            public const string BLINK                       = "BLINK";
+            public const string TURN_ALL_LIGHTS_OFF         = "TURN-ALL-LIGHTS-OFF";
+            public const string TURN_ALL_LIGHTS_ON          = "TURN-ALL-LIGHTS-ON";
+            public const string TURN_ALL_KITCHEN_LIGHTS_OFF = "TURN-ALL-KITCHEN-LIGHTS-OFF";
+            public const string TURN_ALL_KITCHEN_LIGHTS_ON  = "TURN-ALL-KITCHEN-LIGHTS-ON";
+            public const string TURN_GALLERY_DOWN_ON        = "TURN-GALLERY-DOWN-ON";
+            public const string TURN_GALLERY_DOWN_OFF       = "TURN-GALLERY-DOWN-OFF";
+            public const string TURN_BOILER_ON              = "TURN-BOILER-ON";
+            public const string TURN_BOILER_OFF             = "TURN-BOILER-OFF";
+            public const string TURN_FRONT_LIGHTS_ON        = "TURN-FRONT-LIGHTS-ON";
+            public const string TURN_FRONT_LIGHTS_OFF       = "TURN-FRONT-LIGHTS-OFF";
+            public const string TURN_WINDOW_LEDGE_EAST_ON   = "TURN-WINDOW-LEDGE-EAST-ON";
+            public const string TURN_WINDOW_LEDGE_EAST_OFF  = "TURN-WINDOW-LEDGE-EAST-OFF";   
+
+
 
             static Dictionary<uint, string> ComandoDictionary = new Dictionary<uint, string>
             {
