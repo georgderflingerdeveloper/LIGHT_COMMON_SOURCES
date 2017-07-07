@@ -377,7 +377,6 @@ namespace HomeAutomation
             public const string TURN_WINDOW_LEDGE_EAST_OFF  = "TURN-WINDOW-LEDGE-EAST-OFF";   
 
 
-
             static Dictionary<uint, string> ComandoDictionary = new Dictionary<uint, string>
             {
                 {1,                  ON                             },
