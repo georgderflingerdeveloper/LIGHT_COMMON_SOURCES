@@ -725,7 +725,23 @@ namespace HomeAutomation
             static readonly public double TimeDemandForAllOn        = TimeConverter.ToMiliseconds( 5 );
         }
 
-        static class KitchenCenterIoDevices
+        static class DeviceNames
+        {
+            static public Dictionary<uint, string> InputDeviceDictionary { get; private set; }
+            static public Dictionary<uint, string> OutputDeviceDictionary { get; private set; }
+
+            static public string GetInputDeviceName(int key)
+            {
+                return (GetData.ValueFromDeviceDictionary( InputDeviceDictionary, Convert.ToUInt32( key ) ));
+            }
+
+            static public string GetOutputDeviceName(int key)
+            {
+                return (GetData.ValueFromDeviceDictionary( OutputDeviceDictionary, Convert.ToUInt32( key ) ));
+            }
+        }
+
+        static class KitchenCenterIoDevices 
         {
             public const int indDigitalOutputFirstKitchen        = 0;
             public const int indDigitalOutputFrontLight_1        = 1;
@@ -764,15 +780,15 @@ namespace HomeAutomation
                 { WashRoomIODeviceIndices.indDigitalOutputWashRoomFan,                        CenterKitchenDeviceNames.FanWashRoom        }
 			};
 
-			public static string GetInputDeviceName( int key )
-			{
-				return ( GetData.ValueFromDeviceDictionary( CenterInputDeviceDictionary, Convert.ToUInt32(key) ) );
-			}
-			public static string GetOutputDeviceName( int key )
-			{
-				return ( GetData.ValueFromDeviceDictionary( CenterOutputDeviceDictionary, Convert.ToUInt32(key) ) );
-			}
-         }
+            public static string GetInputDeviceName(int key)
+            {
+                return (GetData.ValueFromDeviceDictionary( CenterInputDeviceDictionary, Convert.ToUInt32( key ) ));
+            }
+            public static string GetOutputDeviceName(int key)
+            {
+                return (GetData.ValueFromDeviceDictionary( CenterOutputDeviceDictionary, Convert.ToUInt32( key ) ));
+            }
+        }
 
         static class KitchenLivingRoomIOAssignment
         {

@@ -130,7 +130,7 @@ namespace Communication
             }
         }
 
-        class UdpSend
+        class UdpSend 
         {
             private string IP = UDPConfig.IpAdress;  
             public int port   = UDPConfig.port;  
@@ -154,7 +154,7 @@ namespace Communication
             {
                 if( String.IsNullOrWhiteSpace( message ) )
                 {
-                    Services.TraceMessage_( "Try to send empty string!" );
+                    Services.TraceMessage_( "Tried to send empty string!" );
                     return;
                 }
                 try
